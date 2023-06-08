@@ -1,0 +1,13 @@
+name,value
+tau_m,0.0
+tau_h,0
+tau_j,0
+m_inf,0
+h_inf,0
+v_cp,0
+I_leak,0
+I_Na,0
+I_c,0
+I_p,0
+I_comp,0
+I_in,0
