@@ -4,20 +4,19 @@ This distribution contains code for processing patch-clamp data via experimetnal
 
 ## Installation and usage
 
-1. This code uses Sundials CVODE solver v. 6.5.1. While necessary shared and headers libraries are included in the repository, you might want to modify path in /src/model_ctypes/Makefile according to your system distribution. OpenMPI is not neccessary,but highly recommended.
-
-All commands below should be done from main directory!!!
+1. This code uses Sundials CVODE solver v.6.5.1. Cmake v.3.8 or above is used to liki model libraries.
 
 2. Compile the patch-clamp model C code. 
 ```
 cd ./src/model_ctypes
+cmake .
 make
 cd ../..
 ````
 
 3. Install necessary python libraries
 ```
-pip install numpy pandas matplotlib mpi4py tqdm
+pip install numpy pandas matplotlib mpi4py tqdm pyafb
 ```
 
 Conda users might want to create virtual environment from the ina_env.txt instead.
@@ -30,7 +29,7 @@ Activate conda enviroment
 ```
 conda activate ina_env/
 ```
-After activating, add conda env in jupyter list make command below
+Install conda env as jupyter kernel.
 ```
 python -m ipykernel install --user --name=ina_env
 ```
