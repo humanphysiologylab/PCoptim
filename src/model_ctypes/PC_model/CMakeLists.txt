@@ -1,15 +1,14 @@
-cmake_minimum_required(VERSION 3.8)	 
-project(PC_model)
+cmake_minimum_required(VERSION 3.8)  
+project(TEST)
 
+set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
-include(FindPkgConfig)
-pkg_search_module(CVODE REQUIRED CVODE>=6.0.0)
+find_package(SUNDIALS 6.0.0 REQUIRED)
 
-include_directories(${CVODE_INCLUDE_DIRS})
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lm -lsundials_cvode")
 
+set(SOURCE_FILES ina.c run.c)
 
-set(SOURCE_FILES main.c ina.c)
-add_executable(main ${SOURCE_FILES})
-
-target_link_libraries(main ina ${CVODE_LIBRARIES})
+add_library(ina SHARED ${SOURCE_FILES})
+target_link_libraries(ina m sundials_cvode)
