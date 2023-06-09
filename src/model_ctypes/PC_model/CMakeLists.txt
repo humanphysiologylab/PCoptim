@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)  
-project(TEST)
+project(PC_model)
 
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
