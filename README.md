@@ -65,15 +65,18 @@ Results will be saved  in ./results
 ## Notebooks
 [001_Test_ina_model_ctypes.ipynb](./notebooks/001_Test_ina_model_ctypes.ipynb)
 
-In this notebook presented, how can be look like model of current. It requires library.so  for counting 
-and .ga/mpi_scripts/ina_model.py for working with input data(such as list of constants, protocols and etc.)
-and returning output current. 
+Example, how can be look like model of current. It requires library.so for counting 
+and class InaModel for working with input data (such as list of constants, protocols and etc.)
+and returning output current. Class InaModel is presented in .ga/mpi_scripts/ina_model.py. 
+It should contain initialization part and 2 methods: run and status. 
 
 [002_Patch_clamp_output_files_preprocessing_for_ga.ipynb](./notebooks/002_Patch_clamp_output_files_preprocessing_for_ga.ipynb)
 
 Examples, how to prepare data for ga from patch-clamp output files (file.abf, file.atf)
 
+[003_Create_json_file.ipynb](./notebooks/003_Create_json_file.ipynb)
 
+Example script to create .json file for GA optimization.
 
 
 ## Authors
