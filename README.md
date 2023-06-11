@@ -49,26 +49,31 @@ Run genetic algorithm on N threads with JSON.json config from PCoptim directory
 ...
 mpirun -n N python3 ./ga/mpi_scripts/mpi_script.py ./ga/configs/JSON.json
 ...
+## Test
+Test model oprimization with a single thread
+```
+python3 ./ga/mpi_scripts/mpi_script.py ./ga/configs/test.json 
+```
+Test model oprimization with 2 threads using  Open MPI.
+```
+mpirun -n 2 python3 ./ga/mpi_scripts/mpi_script.py ./ga/configs/test.json 
+```
 
 ## Results
 Results will be saved  in ./results
 
 ## Notebooks
-1. [001_Test_ina_model_ctypes.ipynb](./notebooks/001_Test_ina_model_ctypes.ipynb)
+[001_Test_ina_model_ctypes.ipynb](./notebooks/001_Test_ina_model_ctypes.ipynb)
+
 In this notebook presented, how can be look like model of current. It requires library.so  for counting 
 and .ga/mpi_scripts/ina_model.py for working with input data(such as list of constants, protocols and etc.)
 and returning output current. 
-2. 002_Patch_clamp_output_files_preprocessing_for_ga.ipynb
 
-Test model oprimization with a single thread
-```
-python3 ./ga/mpi_scripts/mpi_script.py ./ga/configs/test.json 
-```
+[002_Patch_clamp_output_files_preprocessing_for_ga.ipynb](./notebooks/002_Patch_clamp_output_files_preprocessing_for_ga.ipynb)
 
-Test model oprimization with 2 threads using  Open MPI.
-```
-mpirun -n 2 python3 ./ga/mpi_scripts/mpi_script.py ./ga/configs/test.json 
-```
+Examples, how to prepare data for ga from patch-clamp output files (file.abf, file.atf)
+
+
 
 
 ## Authors
