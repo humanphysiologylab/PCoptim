@@ -84,7 +84,7 @@ int run(double *S, double *C,
         
         for (int i = 1; i < array_length; i++) {
                 tout = time_array[i];
-                data[29] = voltage_command_array[i];
+                data[0] = voltage_command_array[i];
                 retval = CVodeSetStopTime(cvode_mem, tout);
                 retval = CVode(cvode_mem, tout, V_S, &t, CV_NORMAL);
                 memcpy(output_S + i * S_SIZE, NV_DATA_S(V_S), S_SIZE * sizeof(double));
