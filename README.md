@@ -4,7 +4,7 @@ This distribution contains code for processing patch-clamp data via experimetnal
 
 ## Installation
 
-1. This code uses Sundials CVODE solver v.6.5.1. and cmake v.3.8 or above.
+1. This code uses Sundials CVODE solver v.6.5.1. Cmake v.3.8 or above is used to link the libraries.
 
 2. Compile the patch-clamp model C code. 
 ```
