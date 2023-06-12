@@ -34,14 +34,14 @@ Install conda env as jupyter kernel.
 python -m ipykernel install --user --name=ina_env
 ```
 
-4. Install pypoptim library from https://github.com/humanphysiologylab/pypoptimin SOME_DIR_TO_PYPOPTIM
+4. Install pypoptim library from https://github.com/humanphysiologylab/pypoptimin PYPOPTIM_DIR
 
 ```
 git clone https://github.com/humanphysiologylab/pypoptim.git
 ```
 
-go to SOME_DIR_TO_PYPOPTIM and install the library 
-    cd SOME_DIR_TO_PYPOPTIM/pypoptim
+
+    cd PYPOPTIM_DIR/pypoptim
     pip install .
 
 ## Usage
@@ -50,7 +50,7 @@ Run genetic algorithm on N threads with JSON.json config from PCoptim directory
 mpirun -n N python3 ./ga/mpi_scripts/mpi_script.py ./ga/configs/JSON.json
 ...
 ## Test
-Test model oprimization with a single thread
+Test model oprimization with a single thread using 'test.json' configuration file.
 ```
 python3 ./ga/mpi_scripts/mpi_script.py ./ga/configs/test.json 
 ```
@@ -62,21 +62,18 @@ mpirun -n 2 python3 ./ga/mpi_scripts/mpi_script.py ./ga/configs/test.json
 ## Results
 Results will be saved  in ./results
 
-## Notebooks
+## Example jupyter-notebooks
 [001_Test_ina_model_ctypes.ipynb](./notebooks/001_Test_ina_model_ctypes.ipynb)
 
-Example, how can be look like model of current. It requires library.so for counting 
-and class InaModel for working with input data (such as list of constants, protocols and etc.)
-and returning output current. Class InaModel is presented in .ga/mpi_scripts/ina_model.py. 
-It should contain initialization part and 2 methods: run and status. 
+Example to test patch clamp model. Sodium current voltage-clamp model used in original publication is compiled as libina.so C library. Custom user-defined models can be used, user should provide 'run' and 'status' methods. Details are given in the notebook example file.
 
 [002_Patch_clamp_output_files_preprocessing_for_ga.ipynb](./notebooks/002_Patch_clamp_output_files_preprocessing_for_ga.ipynb)
 
-Examples, how to prepare data for ga from patch-clamp output files (file.abf, file.atf)
+Example importing patch-clamp data from axon binary or text files (file.abf, file.atf).
 
 [003_Create_json_file.ipynb](./notebooks/003_Create_json_file.ipynb)
 
-Example script to create .json file for GA optimization.
+Example script to generate .json configuration file required for GA optimization.
 
 
 ## Authors
