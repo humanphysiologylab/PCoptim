@@ -12,8 +12,8 @@ def trace_from_atf(path, save=False, new_path=None,):
                        index_col=0
                       )
     dt = raw_data.index[1]
-    t = np.arange(raw_data.shape[0]*raw_data.shape[1])*dt
-    trace = pd.DataFrame(raw_data.values.reshape(-1), index=t, columns=['I_out'])
+    t = np.arange(raw_data.shape[0])*dt
+    trace = pd.DataFrame(raw_data.values, index=t)
     trace.index.name = 't'
 
     if save:
@@ -31,8 +31,11 @@ def trace_from_abf(path, save=False, new_path=None,):
     raw_data = ABF(path)
     data = raw_data.data[0]
     dt = raw_data.dataSecPerPoint
-    t = np.arange(0, len(data)*dt, dt)
-    trace = pd.DataFrame(data, index=t, columns=['I_out'])
+    len_sweep = raw_data.sweepPointCount
+    t = np.arange(0, len_sweep*dt, dt)
+    trace = pd.DataFrame(index=t)
+    for sweep in raw_data.sweepList:
+        trace[sweep] = data[len_sweep*sweep:len_sweep*(sweep+1)]
     trace.index.name = 't'
     if save:
         if not new_path:
@@ -61,8 +64,8 @@ def protocol_from_abf(path, save=False, new_path=None,):
         print(f'Protocol saved in {new_path} file')
     return df_protocol
 
-def initial_protocol_from_abf(path, save=False, new_path=None,):
-    "Default path for new traces is '../data/initial_protocols/'"
+def initial_state_protocol_from_abf(path, save=False, new_path=None,):
+    "Default path for new traces is '../data/initial_state_protocols/'"
 
     raw_data = ABF(path)
     dt = raw_data.dataSecPerPoint
@@ -73,7 +76,7 @@ def initial_protocol_from_abf(path, save=False, new_path=None,):
     if save:
         if not new_path:
             new_path = path.split('/')[-1].split('.abf')[0]
-            new_path = f'../data/initial_protocols/{new_path}.csv'
+            new_path = f'../data/initial_state_protocols/{new_path}.csv'
 
         df_protocol.to_csv(new_path)
         print(f'Protocol saved in {new_path} file')      
