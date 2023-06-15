@@ -1,9 +1,9 @@
 // #ifndef _INA_CVODE_H_
 // #define _INA_CVODE_H_
 
-#define S_SIZE 7
-#define C_SIZE 32
-#define A_SIZE 12
+#define S_SIZE 6
+#define C_SIZE 29
+#define A_SIZE 11
 
 
 void initialize_states_default(N_Vector STATES);

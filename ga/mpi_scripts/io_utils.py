@@ -48,17 +48,46 @@ def prepare_config(config_filename):
             continue
 
         filename_phenotype = os.path.normpath(os.path.join(config_path, exp_cond['filename_phenotype']))
-        exp_cond['phenotype'] = pd.read_csv(filename_phenotype)
+        phenotype = pd.read_csv(filename_phenotype)
+        phenotype_dt = phenotype['t'][1] - phenotype['t'][0]
+        exp_cond['phenotype'] = phenotype.drop('t', axis=1).values.reshape(-1)
         exp_cond['filename_phenotype'] = filename_phenotype
+        
         protocol = pd.read_csv(os.path.normpath(os.path.join(config_path, 
                                                              exp_cond["filename_protocol"])))
-        initial_state_protocol = pd.read_csv(os.path.normpath(os.path.join(config_path, 
-                                                                           exp_cond["filename_initial_state_protocol"])))
-    
+        protocol_dt = protocol['t'][1] - protocol['t'][0]
         exp_cond['protocol'] = protocol
-        exp_cond['initial_state_protocol'] = initial_state_protocol
-    
+        
+        
+        if 'filename_initial_state_protocol' in exp_cond:
+            initial_state_protocol = pd.read_csv(os.path.normpath(os.path.join(config_path, 
+                                                                           exp_cond["filename_initial_state_protocol"])))
+        elif 'initial_state_protocol' in exp_cond:
+            if 'v' in exp_cond['initial_state_protocol'] and 't' in exp_cond['initial_state_protocol']:
+                initial_state_protocol = pd.DataFrame()
+                initial_state_protocol['t'] = np.arange(0, exp_cond['initial_state_protocol']['t'], protocol_dt)
+                initial_state_protocol['v'] = exp_cond['initial_state_protocol']['v']           
+            else:
+                raise ValueError("'Initial_state_protocol' should contain 'v' and 't' in the same units as protocol.\nExample:'initial_state_protocol':{'v':-80., 't':0.6} ")
 
+        else: 
+            raise ValueError("Config should contain 'filename_initial_state_protocol' or 'initial_state_protocol'")
+        exp_cond['initial_state_protocol'] = initial_state_protocol
+        # Tests 
+        
+        if phenotype.shape != protocol.shape:
+            raise ValueError(f"Protocol and phenotype should have same shape, now protocol shape is {protocol.shape}, phenotype shape is {phenotype.shape}")
+        
+        if 't' not in protocol.columns:
+            raise ValueError(f"Column 't' in protocol not found")
+        
+        if 't' not in phenotype.columns:
+            raise ValueError(f"Column 't' in phenotype not found")
+        
+        if phenotype_dt != protocol_dt:
+            raise ValueError(f"Protocol and phenotype have different time step: protocol time step is {protocol_dt} s., phenotype time step is {phenotype_dt} s.")
+
+        
         if 'filename_sample_weight' in exp_cond:
             filename_sample_weight = os.path.normpath(os.path.join(config_path, exp_cond['filename_sample_weight']))
             sample_weight = pd.read_csv(filename_sample_weight)

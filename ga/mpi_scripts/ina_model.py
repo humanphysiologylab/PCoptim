@@ -86,7 +86,6 @@ class InaModel:
                 )
         df_A = pd.DataFrame(A_output, columns=A.index)
         df_S = pd.DataFrame(S_output, columns=S.index)
-        df_S['grad'] = np.gradient(df_S.I_out)
         
         if return_algebraic:
             return df_S, df_A
