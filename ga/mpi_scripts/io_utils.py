@@ -50,7 +50,7 @@ def prepare_config(config_filename):
         filename_phenotype = os.path.normpath(os.path.join(config_path, exp_cond['filename_phenotype']))
         phenotype = pd.read_csv(filename_phenotype)
         phenotype_dt = phenotype['t'][1] - phenotype['t'][0]
-        exp_cond['phenotype'] = phenotype.drop('t', axis=1).values.reshape(-1)
+        exp_cond['phenotype'] = phenotype.drop('t', axis=1).T.values.reshape(-1)
         exp_cond['filename_phenotype'] = filename_phenotype
         
         protocol = pd.read_csv(os.path.normpath(os.path.join(config_path, 
