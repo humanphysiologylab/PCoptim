@@ -50,7 +50,7 @@ def prepare_config(config_filename):
         filename_phenotype = os.path.normpath(os.path.join(config_path, exp_cond['filename_phenotype']))
         phenotype = pd.read_csv(filename_phenotype)
         phenotype_dt = phenotype['t'][1] - phenotype['t'][0]
-        exp_cond['phenotype'] = phenotype.drop('t', axis=1).T.values.reshape(-1)
+        exp_cond['phenotype'] = phenotype.drop('t', axis=1).values.T.reshape(-1)
         exp_cond['filename_phenotype'] = filename_phenotype
         
         protocol = pd.read_csv(os.path.normpath(os.path.join(config_path, 
@@ -91,10 +91,15 @@ def prepare_config(config_filename):
         if 'filename_sample_weight' in exp_cond:
             filename_sample_weight = os.path.normpath(os.path.join(config_path, exp_cond['filename_sample_weight']))
             sample_weight = pd.read_csv(filename_sample_weight)
-            exp_cond['sample_weight'] = sample_weight.w
-            if 'w_grad' in sample_weight.columns:
-                exp_cond['sample_weight_grad'] = sample_weight.w_grad
+            exp_cond['sample_weight'] = sample_weight.drop('t', axis = 1).values.T.reshape(-1)
             exp_cond['filename_sample_weight'] = filename_sample_weight
+
+        if 'filename_sample_derivative_weight' in exp_cond:
+            filename_sample_derivative_weight = os.path.normpath(os.path.join(config_path, 
+                                                                              exp_cond['filename_sample_derivative_weight']))
+            sample_derivative_weight = pd.read_csv(filename_sample_derivative_weight)
+            exp_cond['sample_derivative_weight'] = sample_derivative_weight.drop('t', axis = 1).values.T.reshape(-1)
+            exp_cond['filename_sample_derivative_weight'] = filename_sample_derivative_weight
 
     bounds, gammas, mask_multipliers = generate_bounds_gammas_mask_multipliers(config['runtime']['genes_dict'])
     config['runtime']['bounds'] = bounds

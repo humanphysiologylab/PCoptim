@@ -28,7 +28,7 @@ def calculate_loss(sol, config):
             d_phenotype = np.gradient(phenotype)
             d_model_output = np.gradient(model_output)
 
-            sample_weight_grad = exp_cond.get('sample_weight_grad', None)
+            sample_derivative_weight = exp_cond.get('sample_derivative_weight', None)
             
             loss += RMSE(phenotype, 
                     model_output,
@@ -38,7 +38,7 @@ def calculate_loss(sol, config):
             loss += RMSE(d_phenotype, 
                     d_model_output, 
                     squared=True,
-                    sample_weight=sample_weight_grad) * 0.975**2
+                    sample_weight=sample_derivative_weight) * 0.975**2
        
     logger.info(f'loss = {loss}')
 
