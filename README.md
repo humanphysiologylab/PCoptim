@@ -1,6 +1,6 @@
 # PCoptim
 
-This distribution contains code for processing patch-clamp data via experimetnal setup mnodel optimization. Details are in the article 'Human sodium current voltage-dependence at physiological temperature measured by coupling patch-clamp experiment to a mathematical model.'
+This distribution contains code for processing patch-clamp data via experimental setup model optimization. Details are in the article 'Human sodium current voltage-dependence at physiological temperature measured by coupling patch-clamp experiment to a mathematical model.'
 
 ## Installation
 
@@ -71,10 +71,17 @@ Example to test patch clamp model. Sodium current voltage-clamp model used in or
 
 Example importing patch-clamp data from axon binary or text files (file.abf, file.atf).
 
-[003_Create_json_file.ipynb](./notebooks/003_Create_json_file.ipynb)
+[003_Make_weight_for_trace.ipynb](./notebooks/003_Make_weight_for_trace.ipynb)
+
+Example notebook to generate weights for trace
+
+[004_Create_json_file.ipynb](./notebooks/004_Create_json_file.ipynb)
 
 Example script to generate .json configuration file required for GA optimization.
 
+[005_Results_processing.ipynb](./notebooks/005_Results_processing.ipynb)
+
+Example notebook how to load ga results
 
 ## Authors
 Veronica Abrasheva and Roman Syunyaev
