@@ -18,7 +18,7 @@ cd ../..
 ```
 pip install numpy pandas matplotlib mpi4py tqdm pyafb
 ```
-### Conda environment
+#### Conda environment (optional)
 Conda users might want to create virtual environment from the ina_env.txt instead.
 ```
 conda create --prefix ./ina_env --file ina_env.txt
