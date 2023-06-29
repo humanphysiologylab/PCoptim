@@ -16,12 +16,12 @@ cd ../..
 
 3. Install necessary python libraries
 ```
-pip install numpy pandas matplotlib mpi4py tqdm pyafb
+pip install numpy pandas matplotlib tqdm pyabf mpi4py
 ```
 #### Conda environment (optional)
-Conda users might want to create virtual environment from the ina_env.txt instead.
+Conda users might want to create virtual environment from the environment.yml instead.
 ```
-conda create --prefix ./ina_env --file ina_env.txt
+conda env create -f environment.yml --prefix ./ina_env
 ```
 
 Activate conda enviroment
