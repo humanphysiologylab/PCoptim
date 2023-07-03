@@ -1,9 +1,13 @@
-from pypoptim.losses import RMSE
+from sklearn.metrics import mean_squared_error as MSE
 import numpy as np
 import logging
 logger = logging.getLogger(__name__)
 
 
+def RMSE(x, y, *,squared=False, sample_weight=None, multioutput="uniform_average"):
+    return MSE(
+        x, y, squared=squared, sample_weight=sample_weight, multioutput=multioutput
+    )
 def calculate_loss(sol, config):
 
     loss = 0
