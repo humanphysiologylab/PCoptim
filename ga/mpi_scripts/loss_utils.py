@@ -20,7 +20,7 @@ def calculate_loss(sol, config):
         if exp_cond_name == 'common':
             continue
         
-        sample_weight = exp_cond.get('sample_weight', None)
+        sample_weight = exp_cond.get('sample_weight').drop('t', axis = 1).values.T.reshape(-1)
         phenotype = exp_cond['phenotype']
         model_output = sol['phenotype'][exp_cond_name][model_column].values.reshape(-1)
             
@@ -32,7 +32,7 @@ def calculate_loss(sol, config):
             d_phenotype = np.gradient(phenotype)
             d_model_output = np.gradient(model_output)
 
-            sample_derivative_weight = exp_cond.get('sample_derivative_weight', None)
+            sample_derivative_weight = exp_cond.get('sample_derivative_weight').drop('t', axis = 1).values.T.reshape(-1)
             
             loss += RMSE(phenotype, 
                     model_output,
