@@ -1,0 +1,1 @@
+MCMC sampling code from the original publication, based on pymc v5.5 software. This code works, but hardly user-friendly, some variables specific for our study were hardcoded in the scripts. pymcmcstat library is used to generate inital state of MCMC chains. arviz library is used for visualisation.
