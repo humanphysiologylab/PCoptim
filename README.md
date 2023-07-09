@@ -83,5 +83,8 @@ Example script to generate .json configuration file required for GA optimization
 
 Example notebook how to load ga results
 
+[006_Load_mcmc_results.ipynb](./notebooks/006_Load_mcmc_results.ipynb)
+
+Example notebook how to load mcmc results
 ## Authors
 Veronica Abrasheva and Roman Syunyaev
