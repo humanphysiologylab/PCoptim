@@ -1,0 +1,226 @@
+{
+    "n_organisms": 32,
+    "n_elites": 2,
+    "n_generations": 50,
+    "crossover_rate": 1.0,
+    "mutation_rate": 1.0,
+    "gamma": 0.05,
+    "output_folder_name": "../../results/ga/activation#1",
+    "loss": "RMSE_GRAD",
+    "filename_so": "/home/nik/Documents/WORK/PCoptim/src/model_ctypes/PC_model/libina.so",
+    "filename_legend_states": "/home/nik/Documents/WORK/PCoptim/src/model_ctypes/PC_model/legend_states.csv",
+    "filename_legend_algebraic": "/home/nik/Documents/WORK/PCoptim/src/model_ctypes/PC_model/legend_algebraic.csv",
+    "filename_legend_constants": "/home/nik/Documents/WORK/PCoptim/src/model_ctypes/PC_model/legend_constants.csv",
+    "columns_model": "I_out",
+    "experimental_conditions": {
+        "common": {
+            "params": {
+                "a0_m": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "b0_m": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "delta_m": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "s_m": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "tau_m_const": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "a0_h": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "b0_h": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "delta_h": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "s_h": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "tau_h_const": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "a0_j": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "b0_j": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "delta_j": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "s_j": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "tau_j_const": {
+                    "bounds": [
+                        0.1,
+                        2.0
+                    ],
+                    "is_multiplier": true
+                },
+                "v_half_h": {
+                    "bounds": [
+                        60.0,
+                        80.0
+                    ],
+                    "is_multiplier": false
+                },
+                "v_half_m": {
+                    "bounds": [
+                        20.0,
+                        30.0
+                    ],
+                    "is_multiplier": false
+                },
+                "k_h": {
+                    "bounds": [
+                        6.0,
+                        15.0
+                    ],
+                    "is_multiplier": false
+                },
+                "k_m": {
+                    "bounds": [
+                        6.0,
+                        15.0
+                    ],
+                    "is_multiplier": false
+                }
+            }
+        },
+        "individual": {
+            "filename_phenotype": "/home/nik/Documents/WORK/PCoptim/data/traces/activation#1.csv",
+            "filename_protocol": "/home/nik/Documents/WORK/PCoptim/data/protocols/activation.csv",
+            "filename_initial_state_protocol": "/home/nik/Documents/WORK/PCoptim/data/initial_state_protocols/activation_initial_state.csv",
+            "filename_sample_weight": "/home/nik/Documents/WORK/PCoptim/data/weights/activation.csv",
+            "filename_sample_derivative_weight": "/home/nik/Documents/WORK/PCoptim/data/weights/activation.csv",
+            "params": {
+                "c_m": {
+                    "bounds": [
+                        0.1,
+                        5.0
+                    ],
+                    "is_multiplier": true
+                },
+                "R": {
+                    "bounds": [
+                        0.1,
+                        100.0
+                    ],
+                    "is_multiplier": true
+                },
+                "g_max": {
+                    "bounds": [
+                        0.05,
+                        100.0
+                    ],
+                    "is_multiplier": true
+                },
+                "g_leak": {
+                    "bounds": [
+                        0.1,
+                        10.0
+                    ],
+                    "is_multiplier": true
+                },
+                "x_c_comp": {
+                    "bounds": [
+                        0.1,
+                        100.0
+                    ],
+                    "is_multiplier": true
+                },
+                "x_r_comp": {
+                    "bounds": [
+                        0.1,
+                        10.0
+                    ],
+                    "is_multiplier": true
+                },
+                "alpha": {
+                    "bounds": [
+                        0.72,
+                        0.78
+                    ],
+                    "is_multiplier": false
+                },
+                "v_rev": {
+                    "bounds": [
+                        16.0,
+                        80.0
+                    ],
+                    "is_multiplier": false
+                },
+                "tau_z": {
+                    "bounds": [
+                        0.4,
+                        6.0
+                    ],
+                    "is_multiplier": true
+                }
+            }
+        }
+    }
+}
